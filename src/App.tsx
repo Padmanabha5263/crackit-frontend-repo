@@ -1,30 +1,20 @@
 
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import { ThemeProvider, createTheme, CssBaseline, Box } from '@mui/material';
+import { ThemeProvider, CssBaseline, Box } from '@mui/material';
 import NavBar from './components/NavBar';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
 import About from './pages/About';
+import { darkTheme } from './utils/darkTheme';
+import { lightTheme } from './utils/lightTheme';
+import React from 'react';
 
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: '#0d47a1',
-    },
-    secondary: {
-      main: '#ff4081',
-    },
-    background: {
-      default: '#f4f7ff',
-      paper: '#ffffff',
-    },
-  },
-  typography: {
-    fontFamily: ['Inter', 'Roboto', 'Helvetica', 'Arial', 'sans-serif'].join(','),
-  },
-});
 
 function App() {
+
+  const [darkMode] = React.useState(false)
+  const theme = darkMode? darkTheme: lightTheme;
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
